@@ -1,7 +1,10 @@
+import { HeaderStyle } from './HeaderStyled'
+import logo from '../../Assets/image1.png'
+
 export const Header =()=>{
     return(
-        <p>
-            Header
-        </p>
+        <HeaderStyle>
+            <img src={logo}/>
+        </HeaderStyle>
     )
 }
