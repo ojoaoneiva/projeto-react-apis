@@ -6,7 +6,6 @@ export const Section = styled.section `
    display: flex;
    justify-content: center;
    height: 100vh;
-   
    button:first-child{
       position: absolute;
       top: 10px;
