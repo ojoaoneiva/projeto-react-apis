@@ -1,11 +1,20 @@
 import { Section } from './PokemonDetailPageStyle'
-export const PokedexDetailPage =({changeScreen})=>{
-    const showPokedex = () => { changeScreen("Pokedex")}
+import { useNavigate } from "react-router-dom";
+import { goBack } from "../../Components/router/Coordinator";
+import { useParams } from "react-router-dom";
+import { Header } from '../../Components/Header/Header';
+
+export const PokedexDetailPage =({pokemon})=>{
+    const navigate = useNavigate();
+    const pathParams = useParams();
+
     return(
+        <>
+        <Header/>
         <Section>
-            <p>PokedexDetailPage</p>
+            <p>PokedexDetailPage {pathParams.pokemon}</p>
             <div className='z'>
-                <button onClick={showPokedex}>Voltar</button>
+                <button onClick={() => goBack(navigate)}>Voltar</button>
                 <button>Adicionar/remover da pokedex</button>
             </div>
             <div className='a'>
@@ -33,5 +42,6 @@ export const PokedexDetailPage =({changeScreen})=>{
                 <p>move name 3</p>
             </div>
         </Section>
+        </>
     )
 }
