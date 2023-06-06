@@ -4,7 +4,7 @@ import { goBack } from "../../Components/router/Coordinator";
 import { useParams } from "react-router-dom";
 import { Header } from '../../Components/Header/Header';
 
-export const PokedexDetailPage =({pokemon})=>{
+export const PokedexDetailPage =({pokemonName})=>{
     const navigate = useNavigate();
     const pathParams = useParams();
 
@@ -12,7 +12,7 @@ export const PokedexDetailPage =({pokemon})=>{
         <>
         <Header/>
         <Section>
-            <p>PokedexDetailPage {pathParams.pokemon}</p>
+            <p>PokedexDetailPage {pathParams.pokemonName}</p>
             <div className='z'>
                 <button onClick={() => goBack(navigate)}>Voltar</button>
                 <button>Adicionar/remover da pokedex</button>

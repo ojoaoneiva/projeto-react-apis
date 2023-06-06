@@ -6,10 +6,20 @@ export const Section = styled.section `
    display: flex;
    justify-content: center;
    height: 100vh;
+   padding-top: 100px;
+   
    button:first-child{
       position: absolute;
       top: 10px;
-      left: 0;
+      right: 0;
       margin: 10px;
+      border: 0;
+      scale: 0.7;
    }
+`
+export const H1 = styled.h1 `
+      position: absolute;
+      top:150px;
+      left: 100px;
+      color: white;
 `
