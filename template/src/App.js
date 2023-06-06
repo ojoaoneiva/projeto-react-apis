@@ -1,12 +1,14 @@
 import './App.css';
 import { Routess } from './Components/router/Router';
+import {GlobalStyle} from './AppStyle'
 
 function App() {
 
   return (
-    <div className="App">
+    <>
+      <GlobalStyle/>
       <Routess/>
-    </div>
+    </>
   );
 }
 
