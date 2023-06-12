@@ -24,8 +24,6 @@ const removePokemon =(pokemon)=>{
   const filteredList = pokedex.filter((item) => item !== pokemon)
   setPokedex(filteredList);
 }
-
-
   return (
     <BrowserRouter>
       <Routes>

@@ -15,7 +15,7 @@ export const PokedexPage =({removePokemon,pokedex,pokemon})=>{
         <Section>
             <button onClick={() => goToPokedexListPage(navigate)}>Todos Pokémons</button>
             <H1>Meus pokémons</H1>
-            {pokedex.map((pokemon,indice)=>{return <PokemonCard key={indice} pokemon={pokemon} pokemonName={pokemon.name} addOrRemovePokemon={removePokemon} button={buttonAdd}/>})}
+            {pokedex.map((pokemon,indice)=>{return <PokemonCard key={indice} indice={indice} pokemon={pokemon} pokemonName={pokemon.name} addOrRemovePokemon={removePokemon} button={buttonAdd}/>})}
         </Section>
         </>
     )

@@ -5,7 +5,7 @@ export const Section = styled.section `
    flex-wrap: wrap;
    display: flex;
    justify-content: center;
-   height: 100vh;
+   height: fit-content;
    padding-top: 100px;
    
    button:first-child{

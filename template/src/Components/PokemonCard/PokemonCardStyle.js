@@ -10,7 +10,7 @@ flex-direction: column;
 align-items: flex-start;
 justify-content: space-between;
 padding: 20px;
-margin: 10px;
+margin: 30px 10px;
 flex-wrap: wrap;
 .name{
     color: #FFFFFF;
