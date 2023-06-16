@@ -1,40 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { Div } from './PokemonCardStyle'
 import { goToPokedexDetailPage } from "../router/Coordinator";
-import axios from "axios";
 import { useState,useEffect } from "react";
 import { types } from "../../Assets/pokemonList";
-import { PokedexDetailPage } from "../../Pages/PokemonDetailPage/PokemonDetailPage";
 
-export const PokemonCard=({addOrRemovePokemon,pokemon,pokemonName,button, indice})=>{
+export const PokemonCard=({addOrRemovePokemon,pokemon,button, imagem,type})=>{
     const navigate = useNavigate();
-    const[imagem,setImagem]=useState("")
     const[color,setColor]=useState("")
-    const[type,setType]=useState("")
     const[typeIcon,setTypeIcon]=useState("")
     const[powerIcon,setPowerIcon]=useState("")
-    indice += 1;
-
-    const getPokemonInfo = () => {
-        axios.get( `https://pokeapi.co/api/v2/pokemon-form/${indice}/`)
-        .then((resposta) => { 
-            console.log(resposta.data.types[0].type.name)
-            setType(resposta.data.types[0].type.name)
-            typesIcon()
-            const power1 = resposta.data.types[1].type.name
-            const power2 = types[power1]
-            setPowerIcon(power2)
-            setImagem(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${indice}.png`)
-        }).catch((erro) => {
-            console.log(erro.response)
-        })}
 
     useEffect(() => { 
-        getPokemonInfo()
         typesIcon()
     }, [])
-
+    
     const typesIcon =()=>{
+        if(pokemon.data.types.length>1){
+            setPowerIcon(types[pokemon.data.types[1].type.name])}
         if (type==="bug") {setTypeIcon(types.bug);setColor("#729F92")}
         if (type==="dark") {setTypeIcon(types.dark)}
         if (type==="dragon") {setTypeIcon(types.dragon)}
@@ -60,13 +42,13 @@ export const PokemonCard=({addOrRemovePokemon,pokemon,pokemonName,button, indice
             <img className="pokemon" src={imagem} />
             <div className="name">
                 <h3>{pokemon.id}</h3>
-                <h1>{pokemon.name}</h1>
+                <h1>{pokemon.data.name}</h1>
             </div>
             <div className="features">
             <img src={powerIcon} />
             <img src={typeIcon} />               
             </div>
-            <button className="detalhes" onClick={() => goToPokedexDetailPage(navigate,pokemonName)}>Detalhes</button>
+            <button className="detalhes" onClick={() => goToPokedexDetailPage(navigate,pokemon.name)}>Detalhes</button>
             <button onClick={()=>addOrRemovePokemon(pokemon)} >{button.text}</button>
         </Div>
     )
