@@ -1,121 +1,157 @@
 import axios from "axios";
-import { Section, Div } from './PokemonDetailPageStyle'
+import { Section, Div, Details, Name, Images} from './PokemonDetailPageStyle'
 import { useNavigate } from "react-router-dom";
 import { goBack } from "../../Components/router/Coordinator";
 import { useParams } from "react-router-dom";
 import { Header } from '../../Components/Header/Header';
 import { useState,useEffect } from "react";
-import { types } from "../../Assets/pokemonList";
-import buttonRemove from "../../Assets/botões/excluir.png"
+import {BASE_URL_IMAGE} from "../../constants/imageUrl";
+import { types, colors, pokemons0 } from "../../Assets/pokemonList";
+import remove from "../../Assets/headerButtons/excluir.png"
+import add from "../../Assets/headerButtons/pokedex.png"
+import { DetailStats } from "./DetailStats";
+import { useContext } from "react";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 
-export const PokedexDetailPage =({pokemonName,id})=>{
+export const PokedexDetailPage =({pokemonName})=>{
     const[imagemFront,setImagemFront]=useState("")
     const[imagemBack,setImagemBack]=useState("")
     const[imagem,setImagem]=useState("")
-    const[type,setType]=useState("")
     const[typeIcon,setTypeIcon]=useState("")
-    const[color,setColor]=useState("#729F92")
+    const[color,setColor]=useState("")
     const[powerIcon,setPowerIcon]=useState("")
+    const[stats,setStats]=useState([])
+    const[allmoves,setallMoves]=useState([])
+    const[moves,setMoves]=useState([])
+    const[total,setTotal]=useState(0)
+    const[id,setId]=useState(0)
+    const[buttonAddorRemove,setButtonAddorRemove]=useState("")
     const navigate = useNavigate();
     const pathParams = useParams();
     const name = pathParams.pokemonName
-    
-    const getPokemons = () => {
-        axios.get( `https://pokeapi.co/api/v2/pokemon-form/${name}/`)
+    const[capitalName,setCapitalName]=useState(name)
+    const context = useContext(GlobalContext);
+    const {pokedex,removePokemon,addPokemon,} = context;
+
+    useEffect(() => { 
+        getType()
+        getPokemonsImages()
+        getMoves()
+        getStats()
+        getButtonHeader()
+    }, [])
+
+    useEffect(() => { 
+        getTotal()
+    }, [stats])
+
+    useEffect(() => { 
+        getMoves()
+    }, [allmoves])
+
+    const getButtonHeader =()=>{
+        const pokemonInPokedex = pokedex.find((pokemon)=>pokemon.data.name===name);
+        if(pokemonInPokedex){
+            setButtonAddorRemove({image:remove})
+        }
+        else{
+            setButtonAddorRemove({image:add})
+        }
+    }
+
+    const getStats = () => {
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${name}/`)
         .then((resposta) => {
-            console.log(resposta.data.sprites)
-            const id = resposta.data.id
-            getPokemonInfo()
-            setImagemFront(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`)
-            setImagemBack(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${id}.png`)
-            setImagem(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`)
+            setStats(resposta.data.stats)
+            setallMoves(resposta.data.moves)
+            if(resposta.data.id<10){
+                setId(`#0${resposta.data.id}`)
+            }
+            else{
+                setId(`#${resposta.data.id}`)
+            }
         }).catch((erro) => { 
             console.log(erro.response)
         })}
 
-    const getPokemonInfo = () => {
+    const getMoves = () => {
+            const newMoves = allmoves.slice(0,4)
+            setMoves(newMoves)}
+
+    const getTotal =()=>{
+        let sum = 0
+        for (let i of stats){
+            sum +=i.base_stat
+            setTotal(sum)
+        }
+    }
+
+    const getType = () => {
         axios.get( `https://pokeapi.co/api/v2/pokemon-form/${name}/`)
-        .then((resposta) => { 
-            console.log(resposta.data.types[0].type.name)
-            setType(resposta.data.types[0].type.name)
-            typesIcon()
-            const power1 = resposta.data.types[1].type.name
-            const power2 = types[power1]
-            setPowerIcon(power2)
-        }).catch((erro) => {
+        .then((resposta) => {
+            setCapitalName(resposta.data.name[0].toUpperCase()
+            +resposta.data.name.slice(1,resposta.data.name.length))
+            setColor(colors[resposta.data.types[0].type.name])
+            setTypeIcon(types[resposta.data.types[0].type.name])
+            setPowerIcon(types[resposta.data.types[1].type.name])
+        }).catch((erro) => { 
             console.log(erro.response)
         })}
-    
-    useEffect(() => { 
-        getPokemons()
-    }, [])
 
-    const typesIcon =()=>{
-        if (type==="bug") {setTypeIcon(types.bug);setColor("#729F92")}
-        if (type==="dark") {setTypeIcon(types.dark)}
-        if (type==="dragon") {setTypeIcon(types.dragon)}
-        if (type==="eletric") {setTypeIcon(types.eletric)}
-        if (type==="fairy") {setTypeIcon(types.fairy)}
-        if (type==="fighting") {setTypeIcon(types.fighting)}
-        if (type==="fire") {setTypeIcon(types.fire);setColor("#EAAB7D")}
-        if (type==="flying") {setTypeIcon(types.flying)}
-        if (type==="ghost") {setTypeIcon(types.ghost)}
-        if (type==="grass") {setTypeIcon(types.grass);setColor("#729F92")}
-        if (type==="ground") {setTypeIcon(types.ground)}
-        if (type==="ice") {setTypeIcon(types.ice)}
-        if (type==="normal") {setTypeIcon(types.normal);setColor("#BF9762")}
-        if (type==="poison") {setTypeIcon(types.poison)}
-        if (type==="pyschic") {setTypeIcon(types.pyschic)}
-        if (type==="rock") {setTypeIcon(types.rock)}
-        if (type==="steel") {setTypeIcon(types.steel)}
-        if (type==="water") {setTypeIcon(types.water);setColor("#71C3FF")}
-    }
+    const getPokemonsImages = () => {
+        axios.get( `https://pokeapi.co/api/v2/pokemon-form/${name}/`)
+        .then((resposta) => {
+            const id = resposta.data.id
+            setImagemFront(`${BASE_URL_IMAGE}/${id}.png`)
+            setImagemBack(`${BASE_URL_IMAGE}/back/${id}.png`)
+            setImagem(`${BASE_URL_IMAGE}/other/official-artwork/${id}.png`)
+        }).catch((erro) => { 
+            console.log(erro.response)
+        })}
 
     return(
         <>
         <Header/>
         <Section>
-            <p>PokedexDetailPage {pathParams.pokemonName}</p>
             <div className='z'>
                 <button onClick={() => goBack(navigate)}>Todos Pokémons</button>
-                <button><img src={buttonRemove}/></button>
-            </div>
+                <button><img src={buttonAddorRemove.image}/></button>
+            </div>        
+            <Details>
+            <h1>Detalhes</h1>
+            <Images>
             <div className='a' >
                 <img src={imagemFront} alt="a" />
             </div>
             <div className='b'>
-            <img src={imagemBack} alt="a" />
+                <img src={imagemBack} alt="a" />
             </div>
-            <div className='c' color={color}>
-                <p>Stats</p>
-                <p>HP: 46</p>
-                <p>attack: 39</p>
-                <p>defense: 52</p>
-                <p>special-attack: 43</p>
-                <p>special-defense: 54</p>
-                <p>speed: 54</p>
+            </Images>
+            <div className='baseStats'>
+                <h3>Base stats</h3>
+                {stats.map((stat,indice)=>
+                <DetailStats key={indice} stat={stat.stat.name} number={stat.base_stat}/>)}
+                <p>Total: {total}</p>
             </div>
-            <div className='d'>
-                <p>type1</p> 
-                <p>type2</p>
-            </div>
-            <div className='e'>Moves
-                <p>move name 1</p>
-                <p>move name 2</p>
-                <p>move name 3</p>
-            </div>
-            <Div color={color}> 
-            <img className="pokemon" src={imagem} />
+            <Name>
             <div className="name">
                 <h3>{id}</h3>
-                <h1>{name}</h1>
-            </div>
+                <h1>{capitalName}</h1>
+            </div>    
             <div className="features">
-            <img src={powerIcon} />
-            <img src={typeIcon} />               
+                <img src={powerIcon} />
+                <img src={typeIcon} />
             </div>
+            </Name>
+            <div className='Moves'>
+                <h3>Moves</h3>
+            {moves.map((move,indice)=><p key={indice}>{move.move.name}</p>)}
+            </div>
+            <img className="pokemon" src={imagem} />
+            <Div color={color}>
             </Div>
+            </Details>
         </Section>
         </>
     )

@@ -3,11 +3,14 @@ import { Section, H1 } from './PokedexPageStyle'
 import { PokemonCard } from '../../Components/PokemonCard/PokemonCard';
 import { goToPokedexListPage } from "../../Components/router/Coordinator";
 import { Header } from '../../Components/Header/Header';
-import { pokemons } from "../../Assets/pokemonList";
+import {BASE_URL_IMAGE} from "../../constants/imageUrl";
+import { useContext } from "react";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
-export const PokedexPage =({removePokemon,pokedex,pokemon})=>{
+export const PokedexPage =()=>{
     const navigate = useNavigate();
-    const buttonAdd = {text:"Excluir", color: "red"}
+    const context = useContext(GlobalContext);
+    const {removePokemon,pokedex,buttonRemove} = context;
 
     return(
         <>
@@ -15,7 +18,17 @@ export const PokedexPage =({removePokemon,pokedex,pokemon})=>{
         <Section>
             <button onClick={() => goToPokedexListPage(navigate)}>Todos Pokémons</button>
             <H1>Meus pokémons</H1>
-            {pokedex.map((pokemon,indice)=>{return <PokemonCard key={indice} indice={indice} pokemon={pokemon} pokemonName={pokemon.name} addOrRemovePokemon={removePokemon} button={buttonAdd}/>})}
+            {pokedex
+            .sort((a,b)=>{return a.data.id > b.data.id ? 1 : -1})
+            .map((pokemon,indice)=>{
+                return <PokemonCard 
+                key={indice}
+                pokemon={pokemon}
+                pokedex={pokedex}
+                type={pokemon.data.types[0].type.name}
+                addOrRemovePokemon={removePokemon}
+                imagem={`${BASE_URL_IMAGE}/other/official-artwork/${pokemon.data.id}.png`}
+                button={buttonRemove}/>})}
         </Section>
         </>
     )

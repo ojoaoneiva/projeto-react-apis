@@ -41,6 +41,26 @@ export const types = {
     steel: steel,
     water: water
 }
+export const colors = {
+    bug: "#729F92",
+    dark: "red",
+    dragon: "red",
+    eletric: "red",
+    fairy: "red",
+    fighting: "red",
+    fire: "#EAAB7D",
+    flying: "red",
+    ghost: "red",
+    grass: "#729F92",
+    ground: "red",
+    ice: "red",
+    normal: "#BF9762",
+    poison: "red",
+    pyschic: "red",
+    rock: "red",
+    steel: "red",
+    water: "#71C3FF"
+}
 
 export const pokemons0 = [
     {id:"#01",

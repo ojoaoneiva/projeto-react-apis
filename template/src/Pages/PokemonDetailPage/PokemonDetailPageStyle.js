@@ -1,12 +1,11 @@
 import {styled} from "styled-components";
 
 export const Section = styled.section `
-   background-color: gray;
-   flex-wrap: wrap;
-   display: grid;
-   grid-template-columns: 3fr 8fr 1fr 8fr 1fr 12fr 2fr; 
-   grid-template-rows: 1fr 1fr 1fr 3fr 1fr 5fr;
-   height: 100vh;
+background-color: #5E5E5E;
+height: 150vh;
+display: flex;
+justify-content: center;  
+
    button:first-child{
       position: absolute;
       top: 2rem;
@@ -27,9 +26,22 @@ export const Section = styled.section `
       border: 0;
       scale: 0.7;
    }
-   
+`
+export const Details = styled.div `
+   flex-wrap: wrap;
+   display: grid;
+   grid-template-columns: 1.5fr 8fr 1fr 8fr 2fr 7fr 8fr; 
+   grid-template-rows: 1px 1fr 1fr 3fr 1fr 5fr;
+   /* min-height: 50vh; */
+   margin-top: 180px;
+   height: 700px;
+   h1:first-child{
+      grid-column: 2/3;
+      margin-top: -600px;
+      color: white;
+      font-size: 40px;
+   }
    div{
-      margin: 10px;
       display: flex;
    }
    .z{
@@ -39,85 +51,121 @@ export const Section = styled.section `
       width: 100%;
       justify-content: space-between;
    }
-   .a{
+   
+   .baseStats{
       background-color: white;
       z-index: 10;
-      grid-column: 2/3;
-      grid-row: 2/5;
-      align-items: center;
-      justify-content: center;
-   }
-   .b{
-      background-color: white;
-      z-index: 10;
-      grid-column: 2/3;
-      grid-row: 6/7;
-      align-items: center;
-      justify-content: center;
-   }
-   .c{
-      background-color: white;
-      z-index: 10;
+      border-radius: 10px;
       padding: 10%;
       grid-column: 4/5;
       grid-row: 2/7;
       flex-direction: column;
-      align-items: flex-start;
-      :first-child{
-         align-self: center;
+      align-items: stretch;
+      h3:first-child{
+         margin-bottom: 20px;
       }
    }
-   .d{
+   .Moves{
       background-color: white;
       z-index: 10;
-      grid-column: 6/7;
-      grid-row: 2/3;
-      p{padding-left: 15%;}
-   }
-   .e{
-      background-color: white;
-      z-index: 10;
+      border-radius: 10px;
+      padding: 10% 10% 50px 10%;
+      gap: 10px;
       grid-column: 6/7;
       grid-row: 4/7;
       flex-direction: column;
+      p{
+         background-color: #ECECEC;
+         width: fit-content;
+         border: 1px dashed rgba(0, 0, 0, 0.14);
+         border-radius: 12px;
+         padding: 5px;
+      }
+   }
+   .pokemon{
+   z-index: 10;
+   grid-column: 7/8;
+   /* grid-row: 6/7; */
+   position: relative;
+   bottom: 40rem;
+    /* position: relative;
+    bottom: 30rem;
+    left: 55rem; */
+    /* margin-top: -30rem; */
+    /* margin-left: 65rem; */
+    /* margin-right: -80rem; */
+    width: 13rem;
+}
+`
+export const Images = styled.div `
+   grid-column: 2/3;
+   grid-row: 2/7;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+.a{
+      background-color: white;
+      z-index: 10;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-grow: 1;
+      img{
+         width: max-content;
+      }
+   }
+   .b{
+      background-color: white;
+      z-index: 10;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-grow: 1;
+      img{
+         width: max-content;
+      }
    }
 `
+
+export const Name = styled.div `
+      z-index: 10;
+      grid-column: 6/7;
+      grid-row: 2/3;
+      display: flex;
+      gap:10px;
+      flex-direction: column;
+      p{padding-left: 15%;}
+   h1{
+    font-size: 2.2rem;
+}
+.name{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   }
+   .features{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    img{ height: 1.8rem; } 
+   }
+`
+
 export const Div = styled.div `
 background-color: ${(props) => props.color};
 z-index: 5;
-position: absolute;
-grid-template-columns: 2/5;
-grid-template-rows: 1/4;
-height: 210px;
-border-radius: 12px;
+grid-column: 1/8;
+grid-row: 1/8;
+margin: -2% 2%;
+border-radius: 20px;
 display: flex;
 flex-direction: column;
 align-items: flex-start;
 justify-content: space-between;
 padding: 20px;
-margin: 30px 10px;
 flex-wrap: wrap;
-.name{
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-h1{
-    font-size: 2.2rem;
-    position: absolute;
-    margin-top: 0.7rem;
-}
-.pokemon{
-    position: absolute;
-    margin-top: -5rem;
-    margin-left: 11rem;
-    width: 11rem;
-}
-.features{
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    img{ height: 1.8rem; } 
-}
+
 `

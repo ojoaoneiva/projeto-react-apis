@@ -5,30 +5,44 @@ import {PokedexDetailPage} from "../../Pages/PokemonDetailPage/PokemonDetailPage
 import { useState,useEffect } from "react";
 
 export const Routess = () => {
-  const [pokedex,setPokedex] =useState([]);
+//   const [pokedex,setPokedex] =useState([]);
+//   const[pokemons,setPokemons]=useState([]);
 
-  useEffect(() => {
-  const pokemons = localStorage.getItem("pokedex")
-         if (pokemons) { setPokedex(JSON.parse(pokemons) ) }
-  }, []);
+//   useEffect(() => {
+//   const pokedex = localStorage.getItem("pokedex")
+//          if (pokedex) { setPokedex(JSON.parse(pokedex) ) }
+//   const pokemons = localStorage.getItem("pokemons")
+//          if (pokemons) { setPokemons(JSON.parse(pokemons) ) }
+//          else{setPokemons([])}
+//   }, []);
   
-  useEffect(() => {
-  if (pokedex.length > 0) { 
-        localStorage.setItem("pokedex", JSON.stringify(pokedex))}
-  }, [pokedex]);
+//   useEffect(() => {
+//   if (pokedex.length > 0) { 
+//         localStorage.setItem("pokedex", JSON.stringify(pokedex))}
+//   }, [pokedex]);
+
+//   useEffect(() => {
+//     if (pokemons.length > 0) { 
+//           localStorage.setItem("pokemons", JSON.stringify(pokemons))}
+//     }, [pokemons]);
   
-const addPokemon =(pokemon)=>{
-    setPokedex([...pokedex, pokemon]);
-}
-const removePokemon =(pokemon)=>{
-  const filteredList = pokedex.filter((item) => item !== pokemon)
-  setPokedex(filteredList);
-}
+// const addPokemon =(pokemon)=>{
+//   const pokemonExist = pokedex.find((poke)=>pokemon.data.id === poke.data.id)
+//   if (!pokemonExist){setPokedex([...pokedex, pokemon]);}
+//   setPokemons(pokemons.filter((poke)=> poke!==pokemon))
+//   if(pokemons.length===1){localStorage.removeItem("pokemons")}}
+
+// const removePokemon =(pokemon)=>{
+//   const pokemonExist = pokemons.find((poke)=>pokemon.data.id === poke.data.id)
+//   if (!pokemonExist) {setPokemons([...pokemons,pokemon])}
+//   setPokedex(pokedex.filter((poke) => poke !== pokemon));
+//   if(pokedex.length===1){localStorage.removeItem("pokedex")}
+// }
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<PokedexListPage addPokemon={addPokemon} pokedex={pokedex} setPokedex={setPokedex}/>} />
-        <Route path="/pokedexPage/" element={<PokedexPage removePokemon={removePokemon} pokedex={pokedex} setPokedex={setPokedex}/>} />
+        <Route index element={<PokedexListPage />} />
+        <Route path="/pokedexPage/" element={<PokedexPage />} />
         <Route path="/pokedexDetailPage/:pokemonName" element={<PokedexDetailPage />} />
       </Routes>
     </BrowserRouter>
