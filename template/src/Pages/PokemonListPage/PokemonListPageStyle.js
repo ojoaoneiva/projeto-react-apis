@@ -7,7 +7,9 @@ export const Section = styled.section `
    justify-content: center;
    height: fit-content;
    padding-top: 100px;
-   
+   div:hover{
+    scale: 1.03;
+}
    button:first-child{
       position: absolute;
       top: 10px;

@@ -6,6 +6,7 @@ import { Header } from '../../Components/Header/Header';
 import {BASE_URL_IMAGE} from "../../constants/imageUrl";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import vetor from "../../Assets/headerButtons/vector.png"
 
 export const PokedexPage =()=>{
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ export const PokedexPage =()=>{
         <>
         <Header/>
         <Section>
-            <button onClick={() => goToPokedexListPage(navigate)}>Todos Pokémons</button>
+            <button onClick={() => goToPokedexListPage(navigate)}><img src={vetor}/>Todos Pokémons</button>
             <H1>Meus pokémons</H1>
             {pokedex
             .sort((a,b)=>{return a.data.id > b.data.id ? 1 : -1})

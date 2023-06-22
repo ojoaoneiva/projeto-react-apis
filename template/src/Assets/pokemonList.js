@@ -5,7 +5,7 @@ import img4 from "./imgs/4.png"
 import bug from "./tipos/bug.png"
 import dark from "./tipos/dark.png"
 import dragon from "./tipos/dragon.png"
-import eletric from "./tipos/eletric.png"
+import electric from "./tipos/eletric.png"
 import fairy from "./tipos/fairy.png"
 import fighting from "./tipos/fighting.png"
 import fire from "./tipos/fire.png"
@@ -25,7 +25,7 @@ export const types = {
     bug: bug,
     dark: dark,
     dragon: dragon,
-    eletric: eletric,
+    electric: electric,
     fairy: fairy,
     fighting: fighting,
     fire: fire,
@@ -42,23 +42,23 @@ export const types = {
     water: water
 }
 export const colors = {
-    bug: "#729F92",
-    dark: "red",
-    dragon: "red",
-    eletric: "red",
-    fairy: "red",
-    fighting: "red",
+    bug: "#76A866",
+    dark: "#615c67",
+    dragon: "#004170",
+    electric: "#afb457",
+    fairy: "#c8689b",
+    fighting: "#c96f88",
     fire: "#EAAB7D",
-    flying: "red",
-    ghost: "red",
+    flying: "#89a4b8",
+    ghost: "#5c70ac",
     grass: "#729F92",
-    ground: "red",
-    ice: "red",
+    ground: "#e9a060",
+    ice: "#8bcec4",
     normal: "#BF9762",
-    poison: "red",
-    pyschic: "red",
-    rock: "red",
-    steel: "red",
+    poison: "#a88ab0",
+    pyschic: "#f39094",
+    rock: "#958968",
+    steel: "#939393",
     water: "#71C3FF"
 }
 

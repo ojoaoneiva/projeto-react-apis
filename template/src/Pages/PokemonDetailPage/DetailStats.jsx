@@ -4,10 +4,10 @@ export const DetailStats = ({number,stat})=>{
 let color =""
     switch (stat) {
         case "special-attack" :
-            stat="Sp. Atkeeeee"
+            stat="Sp._Atk"
             break
         case "special-defense" :
-            stat="Sp. Def"
+            stat="Sp._Def"
             break
         case "hp" :
                 stat="HP"

@@ -10,6 +10,10 @@ p:first-child{
     color: gray;
     display: flex;
 }
+p:nth-child(2){
+    font-weight: 400;
+    color: #2a2a2a;
+}
 .bar{
     background-color: ${(props) => props.colorBar};
     width: ${(props) => props.size}px;

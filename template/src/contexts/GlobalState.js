@@ -4,6 +4,8 @@ import { GlobalContext } from "./GlobalContext";
 import {BASE_URL} from "../constants/url";
 import add from "../Assets/cardButtons/caputurar.png"
 import remove from "../Assets/cardButtons/excluir.png"
+import removed from "../Assets/alerts/removed.png"
+import added from "../Assets/alerts/added.png"
 
 const GlobalState = (props) => {
     const [pokedex,setPokedex] =useState([]);
@@ -55,7 +57,7 @@ const GlobalState = (props) => {
 
 const ListPokemons = ()=>{
     let urls = []
-    for (let i = 1; i <= 20;i++) {
+    for (let i = 1; i <= 60;i++) {
         urls.push(`${BASE_URL}/${i}/`);
     }
         axios.all(urls.map((url)=> axios.get(url)))

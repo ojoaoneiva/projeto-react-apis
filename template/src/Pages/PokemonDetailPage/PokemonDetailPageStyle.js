@@ -1,11 +1,32 @@
 import {styled} from "styled-components";
 
+export const Loading = styled.div `
+background-color: #5E5E5E;
+width: 100vw;
+height: 100%;
+display: flex;
+justify-content: center;
+position: absolute;
+padding-top: 100px;
+img{
+   width: 500px;
+   height: fit-content;
+}
+`
+
 export const Section = styled.section `
 background-color: #5E5E5E;
-height: 150vh;
+height: 100%;
 display: flex;
-justify-content: center;  
-
+justify-content: center;
+.logo{
+   position: absolute;
+   top: 90px;
+   left: 17vw;
+   justify-content: center;
+   overflow: hidden;
+   opacity: 30%;
+}
    button:first-child{
       position: absolute;
       top: 2rem;
@@ -17,6 +38,9 @@ justify-content: center;
       font-size: 1.3rem;
       font-weight: 800;
       color: #212121;
+      display: flex;
+      align-items: center;
+      gap: 10px;
    }
    button:nth-child(2){
       position: absolute;
@@ -32,9 +56,9 @@ export const Details = styled.div `
    display: grid;
    grid-template-columns: 1.5fr 8fr 1fr 8fr 2fr 7fr 8fr; 
    grid-template-rows: 1px 1fr 1fr 3fr 1fr 5fr;
-   /* min-height: 50vh; */
    margin-top: 180px;
    height: 700px;
+   min-width: 90vw;
    h1:first-child{
       grid-column: 2/3;
       margin-top: -600px;
@@ -57,12 +81,20 @@ export const Details = styled.div `
       z-index: 10;
       border-radius: 10px;
       padding: 10%;
+      gap: 5px;
       grid-column: 4/5;
       grid-row: 2/7;
       flex-direction: column;
       align-items: stretch;
+      font-weight: 500;
       h3:first-child{
          margin-bottom: 20px;
+      }
+      p:first-child{
+         color: gray;
+      }
+      div{
+         gap:10px;
       }
    }
    .Moves{
@@ -112,7 +144,7 @@ export const Images = styled.div `
       display: flex;
       flex-grow: 1;
       img{
-         width: max-content;
+         width: 80%;
       }
    }
    .b{
@@ -124,7 +156,7 @@ export const Images = styled.div `
       display: flex;
       flex-grow: 1;
       img{
-         width: max-content;
+         width: 80%;
       }
    }
 `
@@ -163,9 +195,10 @@ margin: -2% 2%;
 border-radius: 20px;
 display: flex;
 flex-direction: column;
-align-items: flex-start;
-justify-content: space-between;
-padding: 20px;
+align-items: end;
 flex-wrap: wrap;
+img{
+   overflow: hidden;
+}
 
 `
