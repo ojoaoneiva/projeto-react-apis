@@ -40,7 +40,6 @@ export const PokedexDetailPage =({pokemonName})=>{
     useEffect(() => {
         setIsLoading(true)
         getType()
-        getMoves()
         getStats()
         getButtonHeader()
         getPokemonsImages()

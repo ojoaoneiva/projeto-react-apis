@@ -117,15 +117,8 @@ export const Details = styled.div `
    .pokemon{
    z-index: 10;
    grid-column: 7/8;
-   /* grid-row: 6/7; */
    position: relative;
    bottom: 40rem;
-    /* position: relative;
-    bottom: 30rem;
-    left: 55rem; */
-    /* margin-top: -30rem; */
-    /* margin-left: 65rem; */
-    /* margin-right: -80rem; */
     width: 13rem;
 }
 `

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { Div } from './PokemonCardStyle'
 import { goToPokedexDetailPage } from "../router/Coordinator";
 import { useState,useEffect } from "react";
-import add from "../../Assets/cardButtons/caputurar.png"
 import { types,colors } from "../../Assets/pokemonList";
 
 
@@ -12,6 +11,7 @@ export const PokemonCard=({addOrRemovePokemon,pokemon,button, imagem,type,pokemo
     const[typeIcon,setTypeIcon]=useState("")
     const[powerIcon,setPowerIcon]=useState("")
     const[name,setName]=useState("")
+    const[id,setId]=useState(0)
 
     useEffect(() => { 
         typesIcon()
@@ -25,13 +25,14 @@ export const PokemonCard=({addOrRemovePokemon,pokemon,button, imagem,type,pokemo
         }
         setName(pokemon.data.name[0].toUpperCase()
             +pokemon.data.name.slice(1,pokemon.data.name.length))
+        setId(`#0${pokemon.data.id}`)
     }
 
     return(
         <Div color={color}>
             <img className="pokemon" src={imagem} />
             <div className="name">
-                <h3>{pokemon.id}</h3>
+                <h3>{id}</h3>
                 <h1>{name}</h1>
             </div>
             <div className="features">
