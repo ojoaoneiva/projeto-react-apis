@@ -1,22 +1,36 @@
 import { useNavigate } from "react-router-dom";
-import { Section, H1} from './PokemonListPageStyle'
+import { Section } from './PokemonListPageStyle'
 import {PokemonCard} from '../../Components/PokemonCard/PokemonCard';
 import { goToPokedexPage } from "../../Components/router/Coordinator";
 import { Header } from '../../Components/Header/Header';
-import { pokemons } from "../../Assets/pokemonList";
-import buttonPokedex from "../../Assets/botões/pokedex.png"
+import buttonPokedex from "../../Assets/headerButtons/pokedex.png"
+import {BASE_URL_IMAGE} from "../../constants/imageUrl";
+import { useContext } from "react";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
-export const PokedexListPage =({addPokemon,pokemon})=>{
+export const PokedexListPage =()=>{
     const navigate = useNavigate();
-    const buttonRemove = {text:"Capturar!", color: "white"}
+    const context = useContext(GlobalContext);
+    const {addPokemon,pokemons, buttonAdd} = context;
 
     return(
         <>
         <Header/>
         <Section>
-                <button onClick={() => goToPokedexPage(navigate)}><img src={buttonPokedex}/></button>
-            <H1>PokedexListPage</H1>
-            {pokemons.map((pokemon,indice)=>{return <PokemonCard key={indice} pokemon={pokemon} pokemonName={pokemon.name} addOrRemovePokemon={addPokemon} button={buttonRemove}/>})}
+            <button onClick={() => goToPokedexPage(navigate)}><img src={buttonPokedex}/></button>
+            {pokemons
+            .sort((a,b)=>{return a.data.id > b.data.id ? 1 : -1})
+            .map((pokemon,indice)=>{
+            return <PokemonCard 
+            key={indice}
+            pokemon={pokemon}
+            pokemons={pokemons}
+            type={pokemon.data.types[0].type.name}
+            addOrRemovePokemon={addPokemon}
+            button={buttonAdd} 
+            imagem={`${BASE_URL_IMAGE}/other/official-artwork/${pokemon.data.id}.png`}
+            />}
+            )}
         </Section>
         </>
     )

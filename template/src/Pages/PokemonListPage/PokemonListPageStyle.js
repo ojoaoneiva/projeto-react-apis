@@ -5,9 +5,11 @@ export const Section = styled.section `
    flex-wrap: wrap;
    display: flex;
    justify-content: center;
-   height: 100vh;
+   height: fit-content;
    padding-top: 100px;
-   
+   div:hover{
+    scale: 1.03;
+}
    button:first-child{
       position: absolute;
       top: 10px;

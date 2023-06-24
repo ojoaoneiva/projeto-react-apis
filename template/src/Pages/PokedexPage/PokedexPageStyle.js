@@ -5,6 +5,9 @@ export const Section = styled.section `
    flex-wrap: wrap;
    display: flex;
    justify-content: center;
+   div:hover{
+    scale: 1.03;
+}
    height: 100vh;
    padding-top: 150px;
    
@@ -19,6 +22,9 @@ export const Section = styled.section `
       font-size: 1.3rem;
       font-weight: 800;
       color: #212121;
+      display: flex;
+      align-items: center;
+      gap: 10px;
    }
 `
 export const H1 = styled.h1 `

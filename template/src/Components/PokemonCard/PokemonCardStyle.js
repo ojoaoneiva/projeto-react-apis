@@ -10,7 +10,7 @@ flex-direction: column;
 align-items: flex-start;
 justify-content: space-between;
 padding: 20px;
-margin: 10px;
+margin: 30px 10px;
 flex-wrap: wrap;
 .name{
     color: #FFFFFF;
@@ -48,15 +48,7 @@ color: white;
 }
 button:last-child{
 display: flex;
-padding: 4px 10px;
-width: 146px;
-height: 38px;
-background: ${(props) => props.colorbutton};
 border-radius: 8px;
-font-weight: 700;
-font-size: 16px;
-justify-content: center;
-align-items: center;
 border: 0;
 position: absolute;
 margin-top: 8rem;
