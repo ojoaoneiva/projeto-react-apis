@@ -1,3 +1,13 @@
+# [Pokedex](https://pokedex-joaoneiva.surge.sh/)
+
+## Deploy da aplicação com o surge:
+https://pokedex-joaoneiva.surge.sh/
+
+## Imagens:
+![1](https://github.com/ojoaoneiva/projeto-react-apis/assets/122841627/7a94db7f-8c44-49bf-ba33-1a2b5bf60e04)
+![2](https://github.com/ojoaoneiva/projeto-react-apis/assets/122841627/9c7fe9f9-3b21-4567-9e1e-f883a37a80ad)
+![3](https://github.com/ojoaoneiva/projeto-react-apis/assets/122841627/2875031f-bc5b-4908-945e-e72f04081b7f)
+
 # **Projeto React e API's**
 O Projeto React e APIs é um site de pokémons que possui três páginas: Home, Pokedex e Detalhes. O projeto está subdivido em temas de acordo com os conteúdos que estudado durante o Módulo 2 - Frontend.
 
