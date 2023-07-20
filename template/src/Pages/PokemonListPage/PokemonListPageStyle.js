@@ -1,6 +1,6 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
-export const Section = styled.section `
+export const Section = styled.section`
    background-color: gray;
    flex-wrap: wrap;
    display: flex;
@@ -19,7 +19,7 @@ export const Section = styled.section `
       scale: 0.7;
    }
 `
-export const H1 = styled.h1 `
+export const H1 = styled.h1`
       position: absolute;
       top:150px;
       left: 100px;

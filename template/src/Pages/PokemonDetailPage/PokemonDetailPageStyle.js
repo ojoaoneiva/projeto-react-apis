@@ -1,6 +1,6 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
-export const Loading = styled.div `
+export const Loading = styled.div`
 background-color: #5E5E5E;
 width: 100vw;
 height: 100%;
@@ -14,7 +14,7 @@ img{
 }
 `
 
-export const Section = styled.section `
+export const Section = styled.section`
 background-color: #5E5E5E;
 height: 100%;
 display: flex;
@@ -51,7 +51,7 @@ justify-content: center;
       scale: 0.7;
    }
 `
-export const Details = styled.div `
+export const Details = styled.div`
    flex-wrap: wrap;
    display: grid;
    grid-template-columns: 1.5fr 8fr 1fr 8fr 2fr 7fr 8fr; 
@@ -122,7 +122,7 @@ export const Details = styled.div `
     width: 13rem;
 }
 `
-export const Images = styled.div `
+export const Images = styled.div`
    grid-column: 2/3;
    grid-row: 2/7;
    display: flex;
@@ -154,7 +154,7 @@ export const Images = styled.div `
    }
 `
 
-export const Name = styled.div `
+export const Name = styled.div`
       z-index: 10;
       grid-column: 6/7;
       grid-row: 2/3;
@@ -179,7 +179,7 @@ export const Name = styled.div `
    }
 `
 
-export const Div = styled.div `
+export const Div = styled.div`
 background-color: ${(props) => props.color};
 z-index: 5;
 grid-column: 1/8;
@@ -193,5 +193,4 @@ flex-wrap: wrap;
 img{
    overflow: hidden;
 }
-
 `

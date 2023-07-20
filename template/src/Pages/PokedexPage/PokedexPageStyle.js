@@ -1,6 +1,6 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
-export const Section = styled.section `
+export const Section = styled.section`
    background-color: gray;
    flex-wrap: wrap;
    display: flex;
@@ -10,7 +10,6 @@ export const Section = styled.section `
 }
    height: 100vh;
    padding-top: 150px;
-   
    button:first-child{
       position: absolute;
       top: 2rem;
@@ -27,7 +26,7 @@ export const Section = styled.section `
       gap: 10px;
    }
 `
-export const H1 = styled.h1 `
+export const H1 = styled.h1`
       position: absolute;
       top:150px;
       left: 100px;
