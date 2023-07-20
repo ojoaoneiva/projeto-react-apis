@@ -1,6 +1,6 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
-export const Div = styled.div `
+export const Div = styled.div`
 background-color: ${(props) => props.color};
 width: 400px;
 height: 210px;

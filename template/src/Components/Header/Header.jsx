@@ -1,10 +1,10 @@
 import { HeaderStyle } from './HeaderStyled'
 import logo from '../../Assets/image1.png'
 
-export const Header =()=>{
-    return(
+export const Header = () => {
+    return (
         <HeaderStyle>
-            <img src={logo}/>
+            <img src={logo} />
         </HeaderStyle>
     )
 }

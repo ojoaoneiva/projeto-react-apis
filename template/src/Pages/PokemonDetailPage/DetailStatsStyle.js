@@ -1,6 +1,6 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
-export const Style = styled.div `
+export const Style = styled.div`
 gap: 10px;
 display: flex;
 font-weight: 500;

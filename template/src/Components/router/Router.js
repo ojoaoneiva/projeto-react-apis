@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {PokedexPage} from "../../Pages/PokedexPage/PokedexPage";
-import {PokedexListPage} from "../../Pages/PokemonListPage/PokemonListPage";
-import {PokedexDetailPage} from "../../Pages/PokemonDetailPage/PokemonDetailPage";
+import { PokedexPage } from "../../Pages/PokedexPage/PokedexPage";
+import { PokedexListPage } from "../../Pages/PokemonListPage/PokemonListPage";
+import { PokedexDetailPage } from "../../Pages/PokemonDetailPage/PokemonDetailPage";
 
 export const Routess = () => {
 

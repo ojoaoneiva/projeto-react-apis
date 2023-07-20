@@ -26,8 +26,8 @@ const ListPokemons = ()=>{
         .then((resposta) => {
             setPokemons(resposta)}
             )
-        .catch((e)=>{
-            console.log(e.response)})
+        .catch((erro)=>{
+            console.log(erro.response)})
     }
 
   const addPokemon =(pokemon)=>{
